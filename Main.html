@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Editor with Live Output</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>This is a h1</h1>
+  <div class="container">
+    <!-- Left Navbar -->
+    <div class="navbar">
+      <h2>Prompts</h2>
+      <div class="saved-prompts">
+        <!-- Saved prompts will appear here -->
+      </div>
+      <button id="save-prompt">Save Prompt</button>
+      <input id="prompt-input" placeholder="Enter prompt name..." />
+    </div>
+
+    <!-- Main Area -->
+    <div class="main">
+      <!-- Code Inputs -->
+      <div class="code-inputs">
+        <textarea id="html-input" placeholder="HTML Code"></textarea>
+        <textarea id="css-input" placeholder="CSS Code"></textarea>
+        <textarea id="js-input" placeholder="JavaScript Code"></textarea>
+      </div>
+      <!-- Output -->
+      <div class="output" id="output"></div>
+    </div>
+  </div>
+
+  <!-- Background Shapes -->
+  <img src="triangle.png" class="background triangle" alt="Triangle">
+  <img src="circle.png" class="background circle" alt="Circle">
+  <img src="square.png" class="background square" alt="Square">
+
+  <script src="script.js"></script>
 </body>
 </html>
