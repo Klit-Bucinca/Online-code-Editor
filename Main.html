@@ -3,39 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Editor with Live Output</title>
+  <title>Dynamic Layout</title>
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <div class="container">
-    <!-- Left Navbar -->
     <div class="navbar">
-      <h2>Prompts</h2>
-      <div class="saved-prompts">
-        <!-- Saved prompts will appear here -->
+      <h2>Saved Prompts</h2>
+      <div class="saved-prompts"></div>
+      <div class="save-area">
+        <input type="text" placeholder="Prompt name" id="prompt-name">
+        <button id="save-prompt">Save</button>
       </div>
-      <button id="save-prompt">Save Prompt</button>
-      <input id="prompt-input" placeholder="Enter prompt name..." />
+      <div class="user-info">
+        <img src="https://via.placeholder.com/50" alt="User Avatar">
+        <span class="username">John Doe</span>
+      </div>
     </div>
-
-    <!-- Main Area -->
-    <div class="main">
-      <!-- Code Inputs -->
-      <div class="code-inputs">
+    <div class="main layout-vertical-left">
+      <div class="input-area">
         <textarea id="html-input" placeholder="HTML Code"></textarea>
         <textarea id="css-input" placeholder="CSS Code"></textarea>
         <textarea id="js-input" placeholder="JavaScript Code"></textarea>
       </div>
-      <!-- Output -->
-      <div class="output" id="output"></div>
+      <div class="output">
+        <iframe id="output" style="width: 100%; height: 100%; border: none;"></iframe>
+      </div>      
     </div>
+    <button id="toggle-layout" class="layout-toggle">Toggle Layout</button>
   </div>
-
-  <!-- Background Shapes -->
-  <img src="triangle.png" class="background triangle" alt="Triangle">
-  <img src="circle.png" class="background circle" alt="Circle">
-  <img src="square.png" class="background square" alt="Square">
-
   <script src="script.js"></script>
 </body>
 </html>

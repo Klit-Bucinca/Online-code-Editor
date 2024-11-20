@@ -1,59 +1,75 @@
-// References
-const htmlInput = document.getElementById('html-input');
-const cssInput = document.getElementById('css-input');
-const jsInput = document.getElementById('js-input');
-const output = document.getElementById('output');
-const savePromptBtn = document.getElementById('save-prompt');
-const savedPrompts = document.querySelector('.saved-prompts');
-const promptInput = document.getElementById('prompt-input');
+document.addEventListener('DOMContentLoaded', () => {
+  const main = document.querySelector('.main');
+  const layouts = ['layout-vertical-left', 'layout-horizontal', 'layout-vertical-right'];
+  let layoutIndex = 0;
 
-// To store saved prompts
-const prompts = {};
+  function updateOutput() {
+    const html = document.getElementById('html-input').value;
+    const css = `<style>${document.getElementById('css-input').value}</style>`;
+    const js = document.getElementById('js-input').value;
+    const iframe = document.getElementById('output');
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-// Update Output
-function updateOutput() {
-  const html = htmlInput.value;
-  const css = `<style>${cssInput.value}</style>`;
-  const js = `<script>${jsInput.value}<\/script>`;
+    // Write HTML and CSS to the iframe
+    iframeDoc.open();
+    iframeDoc.write(`${css}${html}`);
+    iframeDoc.close();
 
-  output.innerHTML = html + css + js;
-}
-
-// Event Listeners
-htmlInput.addEventListener('input', updateOutput);
-cssInput.addEventListener('input', updateOutput);
-jsInput.addEventListener('input', updateOutput);
-
-// Save Prompt
-savePromptBtn.addEventListener('click', () => {
-  const promptName = promptInput.value.trim();
-  if (promptName) {
-    // Save the current content in the prompts object
-    prompts[promptName] = {
-      html: htmlInput.value,
-      css: cssInput.value,
-      js: jsInput.value,
-    };
-
-    // Create a clickable prompt item
-    const prompt = document.createElement('div');
-    prompt.textContent = promptName;
-    prompt.classList.add('prompt');
-    prompt.addEventListener('click', () => loadPrompt(promptName));
-    savedPrompts.appendChild(prompt);
-
-    // Clear the input field
-    promptInput.value = '';
+    // Execute JavaScript in the iframe
+    const script = iframeDoc.createElement('script');
+    script.textContent = js;
+    iframeDoc.body.appendChild(script);
   }
+
+  document.getElementById('toggle-layout').addEventListener('click', () => {
+    main.classList.remove(...layouts);
+    layoutIndex = (layoutIndex + 1) % layouts.length;
+    main.classList.add(layouts[layoutIndex]);
+  });
+
+  ['html-input', 'css-input', 'js-input'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateOutput);
+  });
+
+  const prompts = [];
+  document.getElementById('save-prompt').addEventListener('click', () => {
+    const name = document.getElementById('prompt-name').value.trim();
+    const html = document.getElementById('html-input').value.trim();
+    const css = document.getElementById('css-input').value.trim();
+    const js = document.getElementById('js-input').value.trim();
+
+    if (!name || (!html && !css && !js)) {
+      alert('Provide a name and some code!');
+      return;
+    }
+
+    if (prompts.some(p => p.name === name)) {
+      alert('Name already exists!');
+      return;
+    }
+
+    prompts.push({ name, html, css, js });
+    const promptEl = document.createElement('div');
+    promptEl.className = 'prompt';
+    promptEl.innerHTML = `<span>${name}</span><button class="delete-btn">Delete</button>`;
+
+    promptEl.addEventListener('click', () => {
+      const prompt = prompts.find(p => p.name === name);
+      if (prompt) {
+        document.getElementById('html-input').value = prompt.html;
+        document.getElementById('css-input').value = prompt.css;
+        document.getElementById('js-input').value = prompt.js;
+        updateOutput();
+      }
+    });
+
+    promptEl.querySelector('.delete-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      prompts.splice(prompts.findIndex(p => p.name === name), 1);
+      promptEl.remove();
+    });
+
+    document.querySelector('.saved-prompts').appendChild(promptEl);
+    document.getElementById('prompt-name').value = '';
+  });
 });
-
-// Load a saved prompt
-function loadPrompt(promptName) {
-  const saved = prompts[promptName];
-  if (saved) {
-    htmlInput.value = saved.html;
-    cssInput.value = saved.css;
-    jsInput.value = saved.js;
-    updateOutput(); // Refresh the output area
-  }
-}
