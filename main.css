@@ -21,6 +21,7 @@ body {
   width: 90%;
   height: 90%;
   gap: 20px;
+   position: relative;
 }
 
 .navbar {
@@ -32,6 +33,7 @@ body {
   justify-content: space-between;
   padding: 20px;
   border-right: 2px solid #f06;
+  transition: transform 0.3s ease;
 }
 
 .navbar h2 {
@@ -45,6 +47,9 @@ body {
   border: 2px solid #f06;
   padding: 10px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .save-area {
