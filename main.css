@@ -24,21 +24,6 @@ body {
    position: relative;
 }
 
-/* Navbar Toggle Button */
-.navbar-toggle {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: #f06;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  z-index: 10;
-  display: none;
-}
-
 .navbar {
   flex: 1;
   max-width: 350px;
@@ -65,6 +50,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.prompt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c2c2c;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f06;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
 .save-area {
@@ -186,63 +183,22 @@ textarea {
   background: #d0044d;
 }
 
-.prompt {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #2c2c2c;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #f06;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-
-.prompt:hover {
-  background: #444;
-  transform: scale(1.02);
-}
-
-.prompt .prompt-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.prompt .prompt-name {
-  font-size: 14px;
-  color: #fff;
-}
-
-.prompt .delete-btn:hover {
-  background: #d0044d;
-}
-
-.prompt .delete-btn {
-  padding: 5px 10px;
-  font-size: 12px;
+/* Navbar Toggle Button */
+.navbar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
   background: #f06;
   color: #fff;
   border: none;
+  padding: 10px;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  z-index: 10;
+  display: none;
 }
 
-
-.delete-btn {
-  background: #d0044d;
-  border: none;
-  color: #fff;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.delete-btn:hover {
-  background: #f06;
-}
-
+/* Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
     position: fixed;
