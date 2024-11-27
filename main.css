@@ -75,7 +75,10 @@ body {
   align-items: center;
   width: 100%;
 }
-
+.prompt .prompt-name {
+  font-size: 14px;
+  color: #fff;
+}
 .save-area {
   display: flex;
   gap: 10px;
