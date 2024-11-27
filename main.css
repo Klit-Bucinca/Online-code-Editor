@@ -63,11 +63,18 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
 }
+
 .prompt:hover {
   background: #444;
   transform: scale(1.02);
 }
 
+.prompt .prompt-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 
 .save-area {
   display: flex;
