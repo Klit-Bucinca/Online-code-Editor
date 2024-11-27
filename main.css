@@ -75,10 +75,23 @@ body {
   align-items: center;
   width: 100%;
 }
+
 .prompt .prompt-name {
   font-size: 14px;
   color: #fff;
 }
+
+.prompt .delete-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  background: #f06;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .save-area {
   display: flex;
   gap: 10px;
