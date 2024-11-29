@@ -21,6 +21,7 @@ body {
   width: 90%;
   height: 90%;
   gap: 20px;
+   position: relative;
 }
 
 .navbar {
@@ -32,6 +33,7 @@ body {
   justify-content: space-between;
   padding: 20px;
   border-right: 2px solid #f06;
+  transition: transform 0.3s ease;
 }
 
 .navbar h2 {
@@ -45,6 +47,53 @@ body {
   border: 2px solid #f06;
   padding: 10px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prompt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c2c2c;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #f06;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.prompt:hover {
+  background: #444;
+  transform: scale(1.02);
+}
+
+.prompt .prompt-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.prompt .prompt-name {
+  font-size: 14px;
+  color: #fff;
+}
+
+.prompt .delete-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  background: #f06;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prompt .delete-btn:hover {
+  background: #d0044d;
 }
 
 .save-area {
@@ -166,27 +215,51 @@ textarea {
   background: #d0044d;
 }
 
-.prompt {
-  background: #333;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 4px;
-}
-
-.prompt:hover {
+/* Navbar Toggle Button */
+.navbar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
   background: #f06;
-}
-
-.delete-btn {
-  background: #d0044d;
+  color: #fff;
   border: none;
-  color: #fff;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 3px;
   cursor: pointer;
+  z-index: 10;
+  display: none;
 }
 
-.delete-btn:hover {
-  background: #f06;
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    z-index: 9;
+    transform: translateX(-100%);
+  }
+
+  .navbar.open {
+    transform: translateX(0);
+  }
+
+  .main {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .output {
+    height: 300px;
+  }
 }
