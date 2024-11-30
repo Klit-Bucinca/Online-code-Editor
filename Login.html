@@ -268,51 +268,44 @@
     
      
     </style>
-</head>
-<body>
-
-    
-
-    <title>Log in Form</title>
 
  
 
-</head>
-<body>
-  <div class="container">
-   
-    <img src="triangle.png" alt="Triangle" class="shape triangle">
-    <img src="Square Topright.png" alt="Square" class="shape square">
-    <img src="circle.png" alt="Circle" class="shape circle">
-    <img src="Square.png" alt="Half Circle" class="shape half-circle">
 
-   
-    <form id="loginForm">
-        <div class="input-group">
-            <label for="username">Username</label>
-            <div class="input-icon">
-                <input type="text" id="username" name="username" placeholder="Enter your username">
+    </head>
+    <body>
+        <div class="container">
+            <img src="triangle.png" alt="Triangle" class="shape triangle">
+            <img src="Square Topright.png" alt="Square" class="shape square">
+            <img src="circle.png" alt="Circle" class="shape circle">
+            <img src="Square.png" alt="Half Circle" class="shape half-circle">
+    
+            <div class="form-container">
+                <h1>Sign Up</h1>
+                <form id="signUpForm">
+                    <div class="input-group">
+                        <label for="username">Name</label>
+                        <div class="input-icon">
+                            <input type="text" id="username" name="username" placeholder="Write your username">
+                        </div>
+                    </div>
+    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-icon">
+                            <input type="password" id="password" name="password" placeholder="Write a new password">
+                            <button type="button" id="togglePassword" class="toggle-password">
+                                <i class="eye-icon closed-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <button type="submit" class="btn">Sign Up</button>
+                    <p class="login-link">Already have an account? <a href="Log in.html">Log In</a></p>
+                </form>
             </div>
         </div>
     
-        <div class="input-group">
-            <label for="password">Password</label>
-            <div class="input-icon">
-                <input type="password" id="password" name="password" placeholder="Enter your password">
-                <button type="button" id="togglePassword" class="toggle-password">
-                    <i class="eye-icon closed-eye"></i>
-                </button>
-            </div>
-        </div>
-    
-
-              
-
-        <button type="submit" class="btn">Log in</button>
-        <p class="login-link">Don't have an account? <a href="Sign up.html">Sign In</a></p>
-      </form>
-    </div>
-  </div>
 
   <script src="scriptlogin.js"></script>
   
@@ -321,5 +314,4 @@
 </html>
 
     
-</body>
-</html>
+
