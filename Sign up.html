@@ -1,163 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Log in</title>
     <style>
-
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
-        body {
-           
-              height: 100vh;
-            font-family: 'Poppins', sans-serif;
-           background-color: #000;
-           color:  #fff;
-           overflow: hidden;
-           
-           
-
-        }
-        .container {
-             position: relative;
-             width: 100%;
-             height: 100%;
-
-
-        }
-
-        .shape{
-         position: absolute;
-         z-index: 0;
-         opacity: 0.9;
-        }
-        
-
-        
-        
-        .triangle {
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif; /* Custom font */
+    background-color: #000;
+    color: #fff;
+    overflow: hidden; /* Prevent scrolling */
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Fill the entire screen */
+  }
+  
+  /* Shapes */
+  .shape {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.9;
+  }
+  
+  .triangle {
     top: 0;
     left: 0;
-    width: 150px; 
+    width: 150px;
   }
   
   .square {
-    top: -50px; 
-    right: 50px; 
-    width: 300px; 
+    top: -50px;
+    right: 150px; /* Moved further left */
+    width: 300px;
   }
   
   .circle {
-    bottom: -50px; 
+    bottom: -50px;
     right: -50px;
-    width: 250px; 
+    width: 250px;
   }
   
   .half-circle {
     bottom: -30px;
     left: -30px;
-    width: 200px; 
+    width: 200px;
   }
-
-.form-container {
-   position: absolute;
-   z-index: 1;
-   top: 40%;
-   left: 28%;
-   transform: translate(-28%,-50%);
-   width: 500px;
-   background-color: rgba(0, 0, 0, 0.8);
-   padding: 40px 30px;
-   border-radius: 10px;
-
-   
-}
-
-h1{
-   text-align: center;
-   font-weight: 600;
-   margin-bottom: 25px;
-   font-size: 32px;
-}
-.input-group{
-   margin-bottom: 25px;
-}
-label{
-   display: block;
-   margin-bottom: 5px;
-   font-size: 16px;
-}
-.input-icon{
-   display: flex;
-   align-items: center;
-   background-color: #222;
-   border: 1px solid #fff;
-   border-radius: 8px;
-   padding: 10px 20px;
-
-
-}
-.input-icon .icon {
-   width: 25px;
-   margin-right: 15px;
-}
-.input-icon .divider{
-   margin:0 10px;
-   color: #fff;
-   font-weight: 600;
-}
-input{
-   flex-grow: 1;
-   border: none;
-   background: none;
-   color: #fff;
-   font-size: 16px;
-   outline: none;
-}
-input::placeholder {
-   color: #888;
-}
-
-
- .input-container {
-align-items: center;
-display: flex;
-border: 1px solid #fff;
-border-radius:  5px;
-padding: 10px;
-background: #1a1a1a;
-
- }
- .input-container .icon {
-   margin-right: 10px;
- }
-
- .input-container input {
-   width: 100%;
-   border: none;
-   background: transparent;
-   color: #fff;
-   outline: none;
- }
-
-input::placeholder {
-   color: #ffffffcc;
-}
-
-.btn {
+  
+  /* Form Container */
+  .form-container {
+    z-index: 1;
+    position: absolute;
+    top: 40%; /* Raised form higher on the screen */
+    left: 28%; /* Adjusted position slightly left */
+    transform: translate(-28%, -50%);
+    width: 500px; /* Increased width for larger form */
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px 30px; /* Increased padding for more spacing */
+    border-radius: 10px; /* Slightly rounded container */
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 32px; /* Larger heading */
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+  
+  .input-group {
+    margin-bottom: 25px; /* Increased spacing between input fields */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px; /* Larger label text */
+  }
+  
+  .input-icon {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border: 1px solid #fff;
+    border-radius: 8px; /* Reduced border-radius for boxier inputs */
+    padding: 10px 20px; /* Increased padding for larger inputs */
+  }
+  
+  .input-icon .icon {
+    width: 25px; /* Slightly larger icons */
+    margin-right: 15px;
+  }
+  
+  .input-icon .divider {
+    margin: 0 10px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 16px; /* Larger input text */
+    outline: none;
+  }
+  
+  input::placeholder {
+    color: #888;
+  }
+  
+  /* Button */
+  .btn {
     width: 100%;
-    padding: 15px; 
+    padding: 15px; /* Increased padding for a larger button */
     background-color: #ff007f;
     border: none;
-    border-radius: 8px; 
+    border-radius: 8px; /* Reduced border-radius for boxier button */
     color: #fff;
-    font-size: 18px; 
+    font-size: 18px; /* Larger button text */
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -166,7 +138,7 @@ input::placeholder {
     background-color: #c4005d;
   }
   
-
+  /* Login Link */
   .login-link {
     text-align: center;
     margin-top: 20px;
@@ -182,7 +154,7 @@ input::placeholder {
     text-decoration: underline;
   }
   
-
+/* General Styles for Toggle Button */
 .toggle-password {
     background: none;
     border: none;
@@ -194,140 +166,124 @@ input::placeholder {
   }
   
   .eye-icon {
-    font-size: 18px; 
-    color: #fff; 
-    transition: color 0.3s; 
+    font-size: 18px; /* Adjust icon size */
+    color: #fff; /* Default icon color */
+    transition: color 0.3s; /* Smooth transition for hover effect */
   }
-
+  /* Eye Icon for Open and Closed States */
 .open-eye::before {
-    content: "\f06e"; 
+    content: "\f06e"; /* Font Awesome "eye" icon */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
   }
   
   .closed-eye::before {
-    content: "\f070"; 
+    content: "\f070"; /* Font Awesome "eye-slash" icon */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
   }
   
   .toggle-password:hover .eye-icon {
-    color: #ff007f; 
+    color: #ff007f; /* Change icon color on hover */
   }
 
-  
+  /* Media Queries for Devices under 768px */
   @media (max-width: 768px) {
     .triangle {
-      width: 80px; 
+      width: 80px; /* Smaller triangle */
     }
-
+  
     .square {
       top: -30px;
-      right: 20px; 
-      width: 150px; 
+      right: 20px; /* Move further left for smaller devices */
+      width: 150px; /* Smaller square */
     }
   
     .circle {
       bottom: -20px;
       right: -10px;
-      width: 120px; /
+      width: 120px; /* Smaller circle */
     }
   
     .half-circle {
       bottom: 0;
       left: 0;
-      width: 100px; 
+      width: 100px; /* Smaller half-circle */
     }
   
     .form-container {
-      width: 95%; 
-      left: 50%; 
+      width: 95%; /* Use almost full screen width */
+      left: 50%; /* Centered for smaller devices */
       transform: translate(-50%, -50%);
-      padding: 15px; 
+      padding: 15px; /* Adjust padding */
     }
   
     h1 {
-      font-size: 20px; 
+      font-size: 20px; /* Smaller heading size */
     }
   
     .btn {
-      font-size: 14px; 
+      font-size: 14px; /* Adjust button font size */
     }
   
     .login-link {
-      font-size: 12px; 
+      font-size: 12px; /* Smaller font for the login link */
     }
   
     .input-icon {
-      padding: 5px 8px; 
+      padding: 5px 8px; /* Reduced padding */
     }
   
     input {
-      font-size: 12px; 
+      font-size: 12px; /* Smaller input font size */
     }
   }
-        
+  
     </style>
 </head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up Form</title>
-
- 
-
-</head>
 <body>
-  <div class="container">
-   
-    <img src="triangle.png" alt="Triangle" class="shape triangle">
-    <img src="Square Topright.png" alt="Square" class="shape square">
-    <img src="circle.png" alt="Circle" class="shape circle">
-    <img src="Square.png" alt="Half Circle" class="shape half-circle">
+    <div class="container">
+        <img src="triangle.png" alt="Triangle" class="shape triangle">
+        <img src="Square Topright.png" alt="Square" class="shape square">
+        <img src="circle.png" alt="Circle" class="shape circle">
+        <img src="Square.png" alt="Half Circle" class="shape half-circle">
 
-   
-    <div class="form-container">
-      <h1>Sign Up</h1>
-      <form id="signupForm">
-        <div class="input-group">
-          <label for="name">Name</label>
-          <div class="input-icon">
-            <img src="image 1.png" alt="User Icon" class="icon">
-            <span class="divider">|</span>
-            <input type="text" id="name" name="name" placeholder="Write your username">
+        <div class="form-container">
+            <h1>Log In</h1>
+            <form id="signupForm">
+              <div class="input-group">
+                <label for="name">Name</label>
+                <div class="input-icon">
+                  <img src="image 1.png" alt="User Icon" class="icon">
+                  <span class="divider">|</span>
+                  <input type="text" id="name" name="name" placeholder="Username">
+                </div>
+              </div>
+
+      
+              <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-icon">
+                  <img src="Password.png" alt="Password Icon" class="icon">
+                  <span class="divider">|</span>
+                  <input type="password" id="password" name="password" placeholder="Password">
+                  <button type="button" id="togglePassword" class="toggle-password">
+                    <i class="eye-icon closed-eye"></i>
+                  </button>
+                </div>
+              </div>
+                    
+      
+              <button type="submit" class="btn">Log In</button>
+              <p class="login-link">Dont have an account? <a href="Sign up.html">Sign Up</a></p>
+            </form>
           </div>
-        </div>
 
-        <div class="input-group">
-          <label for="email">Email</label>
-          <div class="input-icon">
-            <img src="Email.png" alt="Email Icon" class="icon">
-            <span class="divider">|</span>
-            <input type="email" id="email" name="email" placeholder="Write your e-mail">
-          </div>
+        
+    
+            </form>
+            <script src="scriptlogin.js"> </script>
         </div>
-
-        <div class="input-group">
-          <label for="password">Password</label>
-          <div class="input-icon">
-            <img src="Password.png" alt="Password Icon" class="icon">
-            <span class="divider">|</span>
-            <input type="password" id="password" name="password" placeholder="write an new password">
-            <button type="button" id="togglePassword" class="toggle-password">
-               <i class="eye-icon closed-eye"></i>
-            </button>
-          </div>
-        </div>
-              
-
-        <button type="submit" class="btn">Sign Up</button>
-        <p class="login-link">Already have an account? <a href="Login.html">Log In</a></p>
-      </form>
     </div>
-  </div>
-
-  <script src="script1.js"></script>
 </body>
 </html>
