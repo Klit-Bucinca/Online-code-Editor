@@ -287,30 +287,25 @@
     <img src="Square.png" alt="Half Circle" class="shape half-circle">
 
    
-    <div class="form-container">
-      <h1>Log in</h1>
-      <form id="loginForm">
+    <form id="loginForm">
         <div class="input-group">
-          <label for="name">Username</label>
-          <div class="input-icon">
-            <img src="image 1.png" alt="User Icon" class="icon">
-            <span class="divider">|</span>
-            <input type="text" id="name" name="name" placeholder="Write your username">
-          </div>
+            <label for="username">Username</label>
+            <div class="input-icon">
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+            </div>
         </div>
+    
+        <div class="input-group">
+            <label for="password">Password</label>
+            <div class="input-icon">
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <button type="button" id="togglePassword" class="toggle-password">
+                    <i class="eye-icon closed-eye"></i>
+                </button>
+            </div>
+        </div>
+    
 
-      
-        <div class="input-group">
-          <label for="password">Password</label>
-          <div class="input-icon">
-            <img src="Password.png" alt="Password Icon" class="icon">
-            <span class="divider">|</span>
-            <input type="password" id="password" name="password" placeholder="write an new password">
-            <button type="button" id="togglePassword" class="toggle-password">
-               <i class="eye-icon closed-eye"></i>
-            </button>
-          </div>
-        </div>
               
 
         <button type="submit" class="btn">Log in</button>
