@@ -22,3 +22,20 @@ function validatePassword(password) {
     const passwordRegex = /^(?=.[A-Z])(?=.\d).{8,}$/;
     return passwordRegex.test(password);
 }
+
+const passwordInput = document.getElementById('password');
+const togglePasswordButton = document.getElementById('togglePassword');
+const eyeIcon = togglePasswordButton.querySelector('.eye-icon');
+
+togglePasswordButton.addEventListener('click', () => {
+    const isPassword = passwordInput.type === 'password';
+    passwordInput.type = isPassword ? 'text' : 'password';
+
+    if (isPassword) {
+        eyeIcon.classList.remove('closed-eye');
+        eyeIcon.classList.add('open-eye');
+    } else {
+        eyeIcon.classList.remove('open-eye');
+        eyeIcon.classList.add('closed-eye');
+    }
+});
