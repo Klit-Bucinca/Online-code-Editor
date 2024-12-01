@@ -1,40 +1,67 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.getElementById('signupForm').addEventListener('submit', function (event) {
+    event.preventDefault(); 
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+    const nameInput = document.getElementById('name');
+    const passwordInput = document.getElementById('password');
+    const name = nameInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (username === '') {
-        alert('Username is required');
-        return;
+    clearErrors();
+
+    let isValid = true;
+
+
+    if (name === '') {
+        showError(nameInput, 'Username is required.');
+        isValid = false;
+    } else if (name.length < 3) {
+        showError(nameInput, 'Username must be at least 3 characters long.');
+        isValid = false;
     }
 
-    if (!validatePassword(password)) {
-        alert('Password must be at least 8 characters long, include at least one uppercase letter, and contain at least one number.');
-        return;
+  
+    if (password === '') {
+        showError(passwordInput, 'Password is required.');
+        isValid = false;
+    } else if (password.length < 6) {
+        showError(passwordInput, 'Password must be at least 6 characters long.');
+        isValid = false;
     }
 
-    alert('Login successful!');
+    
+    if (isValid) {
+        alert('Form submitted successfully!');
+        
+        event.target.submit(); 
+    }
 });
 
-
-function validatePassword(password) {
-    const passwordRegex = /^(?=.[A-Z])(?=.\d).{8,}$/;
-    return passwordRegex.test(password);
+function showError(input, message) {
+    const parent = input.parentElement;
+    const error = document.createElement('small');
+    error.textContent = message;
+    error.style.color = 'red';
+    error.style.display = 'block';
+    parent.appendChild(error);
 }
 
-const passwordInput = document.getElementById('password');
-const togglePasswordButton = document.getElementById('togglePassword');
-const eyeIcon = togglePasswordButton.querySelector('.eye-icon');
 
-togglePasswordButton.addEventListener('click', () => {
-    const isPassword = passwordInput.type === 'password';
-    passwordInput.type = isPassword ? 'text' : 'password';
+function clearErrors() {
+    const errors = document.querySelectorAll('small');
+    errors.forEach(error => error.remove());
+}
 
-    if (isPassword) {
+
+document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = this.querySelector('.eye-icon');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
         eyeIcon.classList.remove('closed-eye');
         eyeIcon.classList.add('open-eye');
     } else {
+        passwordInput.type = 'password';
         eyeIcon.classList.remove('open-eye');
         eyeIcon.classList.add('closed-eye');
     }
