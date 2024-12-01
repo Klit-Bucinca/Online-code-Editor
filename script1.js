@@ -23,18 +23,15 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
   alert('Form submitted successfully!');
 });
 
-
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
 
-
 function validatePassword(password) {
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
   return passwordRegex.test(password);
 }
-
 
 const passwordInput = document.getElementById('password');
 const togglePasswordButton = document.getElementById('togglePassword');
