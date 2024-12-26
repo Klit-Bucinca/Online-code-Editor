@@ -1,11 +1,11 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
+document.getElementById('logInForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const username = document.getElementById('username').value.trim();
+    const name = document.getElementById('username').value.trim(); 
     const password = document.getElementById('password').value.trim();
 
-    if (username === '') {
-        alert('Username is required');
+    if (name === '') {
+        alert('Name is required');
         return;
     }
 
@@ -14,12 +14,11 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         return;
     }
 
-    alert('Login successful!');
+    alert('Form submitted successfully!');
 });
 
-
 function validatePassword(password) {
-    const passwordRegex = /^(?=.[A-Z])(?=.\d).{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
 }
 
