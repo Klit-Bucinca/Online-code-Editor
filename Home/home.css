@@ -24,50 +24,49 @@ p, h1, h2, h3, h4, h5, li, a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 7em;
+    
     padding: 1.25em;
 }
 
 .navigation-links {
     display: flex;
+    justify-content: space-between;
     list-style: none;
 }
 
-.menu {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-    margin-left: 10px; 
-}
-
-.menu span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    background-color: white;
-    border-radius: 5px;
-}
-
-
-.icons {
-    margin-right: 5em;
-}
-
-.nav_AboutUs{
-    
-}
-
-
 li {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 1em;
     list-style-type: none;
 }
 
 li a {
     text-decoration: none;
-    
+}
+
+.menu {
+    display: none;
+}
+
+.icons {
+    margin-right: 5em;
+}
+
+.navigation-links a:hover {
+    color: #3498db;
+}
+
+
+.nav_GoToEditor a {
+    position: relative;
+    display: inline-block;
+    color: white;
+    background: linear-gradient(to right, rgba(255, 28, 247, 0.567), rgba(0, 238, 255, 0.492));
+    padding: 10px 20px; 
+    border-radius: 8px; 
+}
+
+.nav_GoToEditor a:hover {
+    background: linear-gradient(to right, rgba(255, 28, 247, 0.741), rgba(0, 238, 255, 0.666)); /* Lightened gradient on hover */
 }
 
 /* Main */
@@ -138,11 +137,22 @@ li a {
 .logo_set1{
     display: flex;
     justify-content: space-evenly;
+
+    img {
+        width: clamp(150px, 30%, 250px); 
+        height: auto;
+    }
 }
 
 .logo_set2{
     display: flex;
     justify-content: space-between;
+
+    img {
+        width: clamp(150px, 30%, 250px); 
+        height: auto;
+    }
+
 }
 
 .logo-h{
@@ -172,7 +182,7 @@ li a {
 }
 
 .footer{
-    margin-top: 10em;
+    margin-top: 6em;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -254,45 +264,63 @@ textarea{
     color: #D4155B 
 }
 
-@media (max-width: 768px) {
+p {
+    font-size: clamp(11px, 2vw, 16px);
+}
 
-    .navigation-links {
+.dropdown_menu{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #bc306368;
+    backdrop-filter: blur(5px);
+
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+.dropdown_menu.show{
+    display: block;
+}
+
+
+
+@media (max-width: 996px){
+
+    .Triangle{
+        width: 200px;
+    }
+
+    li {
+        margin: 1em;
+        list-style-type: none;
+        font-size: small;
+    }
+
+}
+
+@media (max-width: 831px) {
+
+
+    .navigation-links-div {
         display: none;
-        flex-direction: column;
-        width: 100%;
-        padding: 0; 
-        margin-top: 10px; 
     }
 
-    .navigation-links li {
-        width: 100%;
-        text-align: left;
-        padding: 10px 20px;
-    }
+   .menu{
+    display: block;
+    width: 30px;
+   }
 
-   
-    .menu {
-        display: flex;
-        cursor: pointer;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .menu div {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        border-radius: 5px;
-    }
-
-
-    .navigation-links li:hover .dropdown-menu {
-        display: block;
-    }
-
-    .navigation-links.show {
-        display: flex;
-    }
 
     .icons {
         display: none;
@@ -300,37 +328,36 @@ textarea{
 
     .Triangle{
         position: relative;
-        width: 150px;
     }
 
     .Circle{
         position: relative;
-        width: 150px;
+        width: 200px;
     }
     
     .Square{
         position: relative;
-        width: 150px;
+        width: 200px;
     }
 
     .logo-h{
         position: relative;
-        width: 150px;
+        
     }
     
     .logo-j{
         position: relative;
-        width: 150px;
+       
     }
     
     .logo-c{
         position: relative;
-        width: 150px;
+        
     }
     
     .tool{
         position: relative;
-        width: 150px;
+        
     }
 
 
@@ -375,4 +402,17 @@ textarea{
         width: 70%;
     }
 
+}
+
+@media (max-width: 450px) {
+
+    .Circle{
+        position: relative;
+        width: 150px;
+    }
+    
+    .Square{
+        position: relative;
+        width: 150px;
+    }
 }

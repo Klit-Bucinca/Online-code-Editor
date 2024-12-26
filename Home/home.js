@@ -35,9 +35,9 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 
 document.addEventListener("DOMContentLoaded", function() {
     const menua = document.querySelector('.menu');
-    const navigationLinks = document.querySelector('.navigation-links');
+    const dropdown_menua = document.querySelector('.dropdown_menu');
 
     menua.addEventListener('click', function() {
-        navigationLinks.classList.toggle('show');
+        dropdown_menua.classList.toggle('show');
  });
 });
