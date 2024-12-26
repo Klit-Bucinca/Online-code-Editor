@@ -5,21 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home page</title>
         <link rel="stylesheet" href="home.css">
+ 
     </head>
     <body>
         <nav class="navigation">
-            
-            <div class="title">
-            <h4>Code Editor Name</h4>
+
+            <img src="Images/Triangle.png" alt="" class="Triangle">
+
+            <div class="menu" id="menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
             <div class="navigation-links-div">
                 <ul class="navigation-links">
-                    <li><a href="#aboutUs">About us</a></li>
-                    <li><a href="#uses">Uses</a></li>
-                    <li><a href="">Go to Editor</a></li>
-                    <li><a href="">Contact us</a></li>
-                    <li><a href="">Sign up</a></li>
+                    <li class="nav_AboutUs"><a href="#aboutUs">About us</a></li>
+                    <li class="nav_Uses"><a href="#uses">Uses</a></li>
+                    <li class="nav_GoToEditor"><a href="">Go to Editor</a></li>
+                    <li class="nav_ContactUs"><a href="">Contact us</a></li>
+                    <li class="nav_SignUp"><a href="">Sign up</a></li>
                 </ul>
             </div>
 
@@ -32,14 +37,6 @@
 
         </nav>
 
-        <img src="Images/Triangle.png" alt="" class="Triangle">
-        <img src="Images/Circle.png" alt="" class="Circle">
-        <img src="Images/square.png" alt="" class="Square">
-        <img src="Images/html-logo.png" alt="" class="logo-h">
-        <img src="Images/css-logo.png" alt="" class="logo-c">
-        <img src="Images/js-logo.png" alt="" class="logo-j">
-        <img src="Images/tool.png" alt="" class="tool">
-
         <div class="all-main">
             <div class="main1">
                 <h1 class="text-ngjyra">A Fast Code Editor</h1>
@@ -47,7 +44,11 @@
                 <p class="main-text">Welcome to [Your Code Editor's Name], your all-in-one, browser-based code editor designed for coders of every level. Whether you're a beginner learning the ropes or a pro refining your craft, our editor provides a clean, intuitive space to write, test, and perfect your code in HTML, CSS, and JavaScript.</p>
                 <section id="aboutUs"></section>
             </div>
-            
+               
+            <div class="square_circle">
+                <img src="Images/square.png" alt="" class="Square">
+                <img src="Images/Circle.png" alt="" class="Circle">    
+            </div>
                     
             <div class="all-main2"> 
                 <div class="about-us">
@@ -57,6 +58,12 @@
                     <section id="uses"></section>
                 </div>
 
+                <div class="logo_set1">
+
+                <img src="Images/html-logo.png" alt="" class="logo-h">
+                <img src="Images/js-logo.png" alt="" class="logo-j">
+
+                </div>
 
                 <div class="uses">
                     <h2>Uses</h2>
@@ -70,6 +77,14 @@
                     </ul>
                     <p>Whether you're experimenting with new ideas, working with a team, or building a full project, [Your Code Editor’s Name] is your versatile tool for efficient, enjoyable coding.</p>
                 </div>
+                
+                <div class="logo_set2">
+
+                 <img src="Images/css-logo.png" alt="" class="logo-c">
+                 <img src="Images/tool.png" alt="" class="tool">
+
+                </div>
+
             </div>
         </div>
         
@@ -87,25 +102,25 @@
             </div>
 
             <div class="footer-form">
-                <form action="">
+                <form action="" id="contactForm">
 
                 <h3 class="get-in-contact">GET IN CONTACT</h3>
                 <h5>24/7 we will answer your questions and problems</h5>
              <div class="form-all">
                 <div class="form-non-message">
                     <div class="form-names">
-                        <input type="text" name="First name" class="name" placeholder="First name">
+                        <input type="text" name="First name" id="firstName" class="name" placeholder="First name">
                         <br><br>
-                        <input type="text" name="Last name" class="lastName" placeholder="Last name">
+                        <input type="text" name="Last name" id="lastName" class="lastName" placeholder="Last name">
                         <br><br>
                     </div>
-                    <input type="tel" name="Phone number" class="phoneNr" placeholder="Phone number">
+                    <input type="tel" name="Phone number" id="phoneNumber" class="phoneNr" placeholder="Phone number">
                     <br>
-                    <input type="email" name="Email" class="email" placeholder="Email">
+                    <input type="email" name="Email" id="email" class="email" placeholder="Email">
                     <br><br>
                 </div>
                 <div class="message">
-                    <textarea name="Message:" class="message">Message</textarea>
+                    <textarea name="Message:" id="message" class="message">Message</textarea>
                 </div>
             </div>
 
@@ -116,5 +131,6 @@
             </div>    
             </footer>
                 
+            <script src="home.js"></script>
     </body>
     </html>

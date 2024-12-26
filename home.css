@@ -1,4 +1,9 @@
 /* General */
+
+body, html {
+    overflow-x: hidden;
+}
+
 body{
     background-color: black;
     
@@ -19,6 +24,7 @@ p, h1, h2, h3, h4, h5, li, a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 7em;
     padding: 1.25em;
 }
 
@@ -27,12 +33,29 @@ p, h1, h2, h3, h4, h5, li, a {
     list-style: none;
 }
 
-.title {
-    margin-left: 8em;
+.menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 10px; 
 }
+
+.menu span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
 
 .icons {
     margin-right: 5em;
+}
+
+.nav_AboutUs{
+    
 }
 
 
@@ -50,24 +73,23 @@ li a {
 /* Main */
 
 .Triangle{
-    position: absolute;
+    position: relative;
     width: 250px;
-    bottom: 37em;
-    right: 78em;
+}
+
+.square_circle{
+    display: flex;
+    justify-content: space-between;
 }
 
 .Circle{
-    position: absolute;
+    position: relative;
     width: 370px;
-    bottom: 2em;
-    right: 0em;
 }
 
 .Square{
-    position: absolute;
+    position: relative;
     width: 330px;
-    top: 28em;
-    right: 73em;
 }
 
 .main1 {
@@ -87,14 +109,14 @@ li a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 25em;
+    gap: 0em;
 }
 
 .all-main2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10em;
+    gap: 5em;
 }
 
 .text-pa-ngjyra {
@@ -113,40 +135,40 @@ li a {
     width: 60%;
 }
 
-.logo-h{
-    position: absolute;
-    width: 200px;
-    top: 65em;
-    right: 72em;
+.logo_set1{
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.logo-c{
-    position: absolute;
+.logo_set2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-h{
+    position: relative;
     width: 200px;
-    top: 98em;
-    right: 55em;
 }
 
 .logo-j{
-    position: absolute;
+    position: relative;
     width: 200px;
-    top: 65em;
-    right: 10em;
+}
+
+.logo-c{
+    position: relative;
+    width: 200px;
 }
 
 .tool{
-    position: absolute;
+    position: relative;
     width: 200px;
-    top: 98em;
-    right: 27em; 
 }
 
 .uses{
     text-align: center;
     margin: 0 auto;
     width: 90%;
-    margin-top: 8em;
-    margin-bottom: 8em;
 }
 
 .footer{
@@ -165,7 +187,7 @@ li a {
 
 .footer-form{
     background-color: #949493;
-    padding: 0.5em 4em;
+    padding: 0.5em 2em;
     margin: 2em;
     
 }
@@ -230,4 +252,127 @@ textarea{
 
 .Contact-color{
     color: #D4155B 
+}
+
+@media (max-width: 768px) {
+
+    .navigation-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0; 
+        margin-top: 10px; 
+    }
+
+    .navigation-links li {
+        width: 100%;
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+   
+    .menu {
+        display: flex;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+
+    .navigation-links li:hover .dropdown-menu {
+        display: block;
+    }
+
+    .navigation-links.show {
+        display: flex;
+    }
+
+    .icons {
+        display: none;
+    }
+
+    .Triangle{
+        position: relative;
+        width: 150px;
+    }
+
+    .Circle{
+        position: relative;
+        width: 150px;
+    }
+    
+    .Square{
+        position: relative;
+        width: 150px;
+    }
+
+    .logo-h{
+        position: relative;
+        width: 150px;
+    }
+    
+    .logo-j{
+        position: relative;
+        width: 150px;
+    }
+    
+    .logo-c{
+        position: relative;
+        width: 150px;
+    }
+    
+    .tool{
+        position: relative;
+        width: 150px;
+    }
+
+
+
+    .footer {
+        flex-direction: column;
+        align-items: center; 
+        width: 100%;
+    }
+
+    .footer-text, .footer-form {
+        width: 90%; 
+        text-align: center;
+    }
+
+    .form-all {
+        flex-direction: column; 
+        margin-bottom: 0em;
+        margin-top: 0em;
+    }
+
+    .form-names {
+        flex-direction: row; 
+        justify-content: space-evenly;
+        width: 100%;
+        gap: 1%;
+    }
+
+    .name{
+        width: 48%;
+    }
+
+    .lastName{
+        width: 48%;
+    }
+
+    .submit {
+        width: 60%; 
+    }
+
+    textarea{
+        width: 70%;
+    }
+
 }
