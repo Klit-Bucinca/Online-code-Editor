@@ -40,4 +40,46 @@ document.addEventListener("DOMContentLoaded", function() {
     menua.addEventListener('click', function() {
         dropdown_menua.classList.toggle('show');
  });
+  
+    const slider = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    console.log('Slider:', slider);
+    console.log('Slides:', slides);
+    console.log('Navigation buttons:', prevBtn, nextBtn);
+
+    function updateSlider() {
+        console.log('Moving to slide:', currentSlide);
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
 });
