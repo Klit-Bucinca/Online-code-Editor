@@ -1,4 +1,6 @@
 document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
     const phoneNumber = document.getElementById("phoneNumber");
@@ -31,6 +33,25 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         event.preventDefault();
         return;
     }
+
+    const formData = new FormData(this);
+
+    fetch('contact_process.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        if (data.status === 'success') {
+ 
+            this.reset();
+        }
+    })
+    .catch(error => {
+        alert('An error occurred while submitting the form.');
+        console.error('Error:', error);
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -82,4 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
             updateSlider();
         });
     });
+
+    
 });
