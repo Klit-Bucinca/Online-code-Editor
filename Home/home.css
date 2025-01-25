@@ -424,7 +424,7 @@ p {
     margin: 0 auto;
     padding: 20px;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.05); /* Dark theme compatible */
+    background-color: rgba(255, 255, 255, 0.05);  
     border-radius: 10px;
 }
 
@@ -440,14 +440,14 @@ p {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    background: rgba(255, 255, 255, 0.03); /* Dark theme compatible */
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .slide img {
     max-width: 200px;
-    height: auto;
+    max-height: 120px;
     margin-bottom: 20px;
     border-radius: 8px;
 }
@@ -523,7 +523,8 @@ p {
     }
 
     .slide img {
-        max-width: 150px;
+        width: 150px;
+        height: 150px;
     }
 
     .slider-btn {
@@ -534,8 +535,117 @@ p {
 
 @media (max-width: 450px) {
     .slide img {
-        max-width: 120px;
+        width: 120px;
+        height: 120px;
     }
+}
+
+.slider_form {
+    background-color: #949493;
+    padding: 0.5em 2em;
+    margin: 2em auto;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.slider_form .form-all {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2em;
+}
+
+.slider_form .form-non-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slider_form .form-names {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.slider_form .message {
+    height: 11em;
+}
+
+.slider_form .submit {
+    height: 2.5em;
+    width: 100%;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+    color: white;
+    background-color: #D4155B;
+    cursor: pointer;
+}
+
+.slider_form input {
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+    height: 2em;
+    background-color: #DBDBDA;
+}
+
+.slider_form textarea {
+    border-radius: 5px;
+    background-color: #DBDBDA;
+    width: 100%;
+}
+
+.slider_form .get-in-contact {
+    color: #D4155B;
+    text-align: center;
+}
+
+.slider_form h5 {
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 831px) {
+    .slider_form .form-all {
+        flex-direction: column;
+        margin-bottom: 0em;
+        margin-top: 0em;
+    }
+
+    .slider_form .form-names {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .slider_form .name,
+    .slider_form .lastName {
+        width: 100%;
+    }
+
+    .slider_form .submit {
+        width: 60%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .slider_form textarea {
+        width: 100%;
+    }
+}
+
+.delete-slide {
+    background-color: #D4155B;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete-slide:hover {
+    background-color: #ff1e6d;
 }
 
 

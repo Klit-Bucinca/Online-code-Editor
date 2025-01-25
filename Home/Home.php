@@ -86,59 +86,59 @@
                         <button class="slider-btn prev-btn">&#10094;</button>
                         
                         <div class="slider-wrapper">
-                            <div class="slide">
-                                <img src="Images/learning.jpg" alt="Learning">
-                                <div class="slide-content">
-                                    <h3>Learning & Practicing</h3>
-                                    <p>Perfect for beginners, offering a simple, distraction-free space to practice HTML, CSS, and JavaScript.</p>
+                            <?php
+                            $slidesQuery = "SELECT * FROM slider_content ORDER BY created_at";
+                            $slidesResult = $conn->query($slidesQuery);
+                            
+                            while($slide = $slidesResult->fetch_assoc()) {
+                                ?>
+                                <div class="slide">
+                                    <img src="<?php echo htmlspecialchars($slide['image_path']); ?>" alt="<?php echo htmlspecialchars($slide['title']); ?>">
+                                    <div class="slide-content">
+                                        <h3><?php echo htmlspecialchars($slide['title']); ?></h3>
+                                        <p><?php echo htmlspecialchars($slide['description']); ?></p>
+                                        <button class="delete-slide" data-id="<?php echo $slide['id']; ?>">Delete Slide</button>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="slide">
-                                <img src="Images/prototyping.jpg" alt="Prototyping">
-                                <div class="slide-content">
-                                    <h3>Rapid Prototyping</h3>
-                                    <p>Quickly sketch out ideas, test code snippets, and refine them in real-time without setting up a full development environment.</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <img src="Images/organising.jpg" alt="Organization">
-                                <div class="slide-content">
-                                    <h3>Project Organization</h3>
-                                    <p>Our lane feature acts as your coding history, allowing you to save, organize, and quickly revisit past snippets or projects.</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <img src="Images/webdev.jpg" alt="Development">
-                                <div class="slide-content">
-                                    <h3>Web Development</h3>
-                                    <p>Build and preview web projects with live feedback, making it easy to see changes and troubleshoot code instantly.</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <img src="Images/efficientwork.jpg" alt="Workflow">
-                                <div class="slide-content">
-                                    <h3>Efficient Workflow</h3>
-                                    <p>Ideal for managing multiple small projects or coding exercises, with a streamlined interface for saving and retrieving your work.</p>
-                                </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
                         </div>
 
                         <button class="slider-btn next-btn">&#10095;</button>
                         
                         <div class="slider-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <?php
+                            $numSlides = $slidesResult->num_rows;
+                            for ($i = 0; $i < $numSlides; $i++) {
+                                echo '<span class="dot' . ($i === 0 ? ' active' : '') . '"></span>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
                 
+                <div class="slider_form">
+                    <form action="add_slide.php" method="POST" enctype="multipart/form-data" id="sliderForm">
+                        <h3 class="get-in-contact">ADD NEW SLIDE</h3>
+                        <h5>Add content to your slider</h5>
+                        <div class="form-all">
+                            <div class="form-non-message">
+                                <div class="form-names">
+                                    <input type="text" name="title" class="name" placeholder="Slide Title" required>
+                                    <br><br>
+                                    <input type="file" name="image" class="lastName" accept="image/*" required>
+                                    <br><br>
+                                </div>
+                            </div>
+                            <div class="message">
+                                <textarea name="description" class="message" placeholder="Slide Description" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit">Add Slide</button>
+                    </form>
+                </div>
+
                 <div class="logo_set2">
 
                  <img src="Images/css-logo.png" alt="" class="logo-c">

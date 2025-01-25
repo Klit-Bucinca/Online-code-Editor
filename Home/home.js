@@ -1,5 +1,5 @@
 document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
@@ -105,4 +105,66 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     
+});
+
+document.getElementById("sliderForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const title = document.querySelector('input[name="title"]');
+    const description = document.querySelector('textarea[name="description"]');
+    const image = document.querySelector('input[name="image"]');
+
+    if (
+        title.value.trim() === "" ||
+        description.value.trim() === "" ||
+        !image.files[0]
+    ) {
+        alert("All fields are required. Please fill them out.");
+        return;
+    }
+
+    const formData = new FormData(this);
+
+    fetch('add_slide.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        if (data.status === 'success') {
+            this.reset();
+            location.reload(); 
+        }
+    })
+    .catch(error => {
+        alert('An error occurred while adding the slide.');
+        console.error('Error:', error);
+    });
+});
+
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('delete-slide')) {
+        if (confirm('Are you sure you want to delete this slide?')) {
+            const slideId = e.target.dataset.id;
+            const formData = new FormData();
+            formData.append('id', slideId);
+
+            fetch('delete_slide.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.status === 'success') {
+                    location.reload(); 
+                }
+            })
+            .catch(error => {
+                alert('An error occurred while deleting the slide.');
+                console.error('Error:', error);
+            });
+        }
+    }
 });

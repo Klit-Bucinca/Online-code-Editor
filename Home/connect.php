@@ -20,4 +20,5 @@
     $usesResult = $conn->query($usesQuery);
     $usesContent = $usesResult->fetch_assoc()['content'] ?? "Default Uses text.";
 
+
 ?>
