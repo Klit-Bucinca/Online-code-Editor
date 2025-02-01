@@ -55,7 +55,7 @@ $prompts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="user-info" id="user-button">
             <span class="username"><?= $username ?></span>
             <div id="user-dropdown" class="user-dropdown hidden">
-                <a href="Home/Home.html">Go to Home Page</a>
+                <a href="Home/Home.php">Go to Home Page</a>
                 <a href="logout.php">Sign Out</a>
             </div>
         </div>

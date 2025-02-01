@@ -5,7 +5,7 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$conn = new mysqli('localhost', 'root', '', 'code_editor_db');
+$conn = new mysqli('localhost', 'root', '', 'user_database');
 
 if ($conn->connect_error) {
     die("Connection Failed: " . $conn->connect_error);
