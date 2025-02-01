@@ -25,9 +25,9 @@
                 <div class="dropdown_menu" id="dropdown_menu">
                     <li class="nav_AboutUs"><a href="#aboutUs">About us</a></li>
                     <li class="nav_Uses"><a href="#uses">Uses</a></li>
-                    <li class="nav_GoToEditor"><a href="../Main.html">Go to Editor</a></li>
+                    <li class="nav_GoToEditor"><a href="../Main.php">Go to Editor</a></li>
                     <li class="nav_ContactUs"><a href="#contactUS">Contact us</a></li>
-                    <li class="nav_SignUp"><a href="../Sign up.html">Sign up</a></li>
+                    <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
                 </div>
         
 
@@ -35,9 +35,9 @@
                 <ul class="navigation-links">
                     <li class="nav_AboutUs"><a href="#aboutUs">About us</a></li>
                     <li class="nav_Uses"><a href="#uses">Uses</a></li>
-                    <li class="nav_GoToEditor"><a href="../Main.html">Go to Editor</a></li>
+                    <li class="nav_GoToEditor"><a href="../Main.php">Go to Editor</a></li>
                     <li class="nav_ContactUs"><a href="#contactUS">Contact us</a></li>
-                    <li class="nav_SignUp"><a href="../Sign up.html">Sign up</a></li>
+                    <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
                 </ul>
             </div>
 
