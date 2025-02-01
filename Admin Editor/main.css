@@ -24,7 +24,6 @@ body {
   position: relative;
 }
 
-/* Navbar */
 .navbar {
   flex: 0 0 350px;
   max-width: 350px;
@@ -158,22 +157,16 @@ body {
   font-weight: bold;
 }
 
-/* Main Content */
+
 .main {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: row;
   gap: 20px;
   padding: 20px;
   margin-left: 350px;
-  width: calc(100% - 350px);
+  width: calc(100% - 350px); 
   box-sizing: border-box;
-  transition: width 0.3s ease, margin-left 0.3s ease;
-}
-
-.main.shrinked {
-  margin-left: 400px;
-  width: calc(100% - 400px);
 }
 
 .input-area {
@@ -215,16 +208,6 @@ textarea {
   flex-direction: row-reverse;
 }
 
-/* Buttons Row (Navbar Toggle + Layout Toggle) */
-.buttons-row {
-  display: flex;
-  gap: 10px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 11;
-}
-
 /* Fixed Layout Toggle Button */
 .layout-toggle {
   position: fixed;
@@ -244,65 +227,32 @@ textarea {
 
 /* Navbar Toggle Button */
 .navbar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
   background: #f06;
   color: #fff;
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 11;
-}
-
-/* Close Button for Navbar */
-.navbar-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #d0044d;
-  color: #fff;
-  border: none;
-  padding: 6px 8px;
-  font-size: 12px;
+  padding: 10px;
   border-radius: 3px;
   cursor: pointer;
-  z-index: 12;
-  display: block;
+  z-index: 10;
+  display: none;
 }
 
-/* Display navbar-toggle by default on smaller screens */
-  @media (max-width: 1200px) {
-  .navbar-toggle {
-    display: block;
-  }
-
-  .navbar.open + .buttons-row .navbar-toggle {
-    display: none;
-  }
-}
-
-
-@media (min-width: 1201px) {
-  .navbar-close {
-      display: none;
-    }
-  .navbar-toggle {
-      display: none;
-    }
-}
-
-@media (max-width: 800px) {
-  .buttons-row button {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
+/* Responsive Styles */
+@media (max-width: 768px) {
   .navbar {
     position: fixed;
-    transform: translateX(-100%);
-    z-index: 10;
+    top: 0;
+    left: -100%;
     height: 100%;
-    transition: transform 0.3s ease;
+    z-index: 9;
+    transform: translateX(-100%);
+  }
+
+  .layout-toggle {
+    display: none;
   }
 
   .navbar.open {
@@ -310,60 +260,22 @@ textarea {
   }
 
   .main {
+    flex-direction: column;
+    gap: 10px;
     margin-left: 0;
-    width: 100%;
+    width: 100%; 
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .output {
+    height: 300px;
   }
 }
-@media (max-width: 660px) {
-  /* General Reset */
-  * {
-    overflow: hidden;
-  }
-
-  /* Navbar Styles */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 20;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    background: #1c1c1c; /* Ensure the navbar covers everything */
-  }
-
-  .navbar.open {
-    transform: translateX(0);
-  }
-
-  /* Overlay to hide everything except navbar */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dimmed overlay */
-    z-index: 15;
-    display: none; /* Hidden by default */
-  }
-
-  .overlay.active {
-    display: block; /* Show when the navbar is open */
-  }
-
-  .navbar.open + .main {
-    display: none; /* Ensure main content is hidden */
-  }
-
-  .navbar.open + .buttons-row #toggle-layout {
-      display: none;
-  }
-  
-}
-
-
-
-
-
