@@ -39,7 +39,15 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <style>
-        /* General Body Styles */
+/* ========================= */
+/* 🔹 General Reset & Layout */
+/* ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #121212;
@@ -48,7 +56,9 @@ body {
     display: flex;
 }
 
-/* Sidebar Navigation */
+/* ========================= */
+/* 🔹 Sidebar Navigation */
+/* ========================= */
 .sidebar {
     width: 250px;
     background-color: #1c1c1c;
@@ -57,6 +67,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
 .sidebar h2 {
@@ -90,11 +101,11 @@ body {
     background-color: #2a2a2a;
 }
 
-/* Sign Out Button Fix */
+/* Sign Out Button */
 .sign-out {
     margin-top: auto;
     text-align: center;
-    padding-bottom: 20px; /* Extra padding to prevent cutoff */
+    padding-bottom: 20px;
 }
 
 .sign-out a {
@@ -105,7 +116,7 @@ body {
     padding: 10px 20px;
     border-radius: 8px;
     display: inline-block;
-    width: 80%; /* Ensure it fits properly */
+    width: 80%;
     text-align: center;
 }
 
@@ -113,15 +124,14 @@ body {
     background-color: #ff85c4;
 }
 
-/* Main Content */
+/* ========================= */
+/* 🔹 Main Content */
+/* ========================= */
 .main-content {
     margin-left: 270px;
     padding: 40px;
     width: calc(100% - 270px);
-}
-
-.hidden {
-    display: none;
+    transition: width 0.3s ease, margin-left 0.3s ease;
 }
 
 h2 {
@@ -130,10 +140,12 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Fix table alignment */
+/* ========================= */
+/* 🔹 Table Styles */
+/* ========================= */
 table {
     width: 95%;
-    margin: 20px auto; /* Centering */
+    margin: 20px auto;
     border-collapse: collapse;
     background-color: #1c1c1c;
     color: #fff;
@@ -141,42 +153,44 @@ table {
     text-align: left;
 }
 
-/* Table headings */
+/* Table Headings */
 table th {
     background-color: #2a2a2a;
     color: #d4155b;
     padding: 15px;
-    text-align: left; /* Align text properly under each column */
+    text-align: left;
 }
 
-/* Table cells */
+/* Table Cells */
 table td {
     border-bottom: 1px solid #333;
     padding: 15px;
-    text-align: left; /* Ensure proper text alignment */
-    vertical-align: middle; /* Aligns text properly inside cells */
+    text-align: left;
+    vertical-align: middle;
 }
 
-/* Align ID column to center */
+/* ID Column Centering */
 table td:first-child {
     text-align: center;
-    width: 50px; /* Adjusts width for ID column */
+    width: 50px;
 }
 
-/* Ensure "Actions" buttons align properly */
+/* Actions Column */
 table td:last-child {
     text-align: center;
-    width: 150px; /* Adjust column width for buttons */
+    width: 150px;
 }
 
-/* Fix buttons inside the Actions column */
+/* Action Buttons */
 .action-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Space between buttons */
+    gap: 10px;
 }
 
-/* Buttons */
+/* ========================= */
+/* 🔹 Buttons */
+/* ========================= */
 button {
     background-color: #d4155b;
     color: #fff;
@@ -191,8 +205,9 @@ button:hover {
     background-color: #c4005d;
 }
 
-
-/* Fix Modal Alignment */
+/* ========================= */
+/* 🔹 Modal Popup */
+/* ========================= */
 .modal {
     display: none;
     position: fixed;
@@ -205,10 +220,9 @@ button:hover {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Ensure it stays on top */
+    z-index: 1000;
 }
 
-/* Close Button */
 .modal .close {
     position: absolute;
     top: 10px;
@@ -218,7 +232,6 @@ button:hover {
     cursor: pointer;
 }
 
-/* Modal Input Fields */
 .modal input {
     width: 100%;
     padding: 10px;
@@ -230,23 +243,62 @@ button:hover {
     font-size: 14px;
 }
 
-/* Modal Buttons */
 .modal button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
 }
 
-/* Responsive Fix for Smaller Screens */
+/* ========================= */
+/* 📱 **Responsive Design** */
+/* ========================= */
+
+/* ✅ Medium Screens (≤1200px) */
+@media (max-width: 1200px) {
+    .main-content {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        padding: 30px;
+    }
+
+    .sidebar {
+        width: 220px;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+/* ✅ Tablets & Phones (≤768px) */
 @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
     .sidebar {
         width: 100%;
         height: auto;
         position: relative;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .main-content {
         margin-left: 0;
+        width: 100%;
         padding: 20px;
     }
 
@@ -260,6 +312,30 @@ button:hover {
         width: 90%;
     }
 }
+
+/* ✅ Small Phones (≤480px) */
+@media (max-width: 480px) {
+    .sidebar ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .sidebar a {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
 
     </style>
     <script>
