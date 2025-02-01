@@ -49,3 +49,4 @@ togglePasswordButton.addEventListener('click', () => {
       eyeIcon.classList.add('closed-eye');
   }
 });
+
