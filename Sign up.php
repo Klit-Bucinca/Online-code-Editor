@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Sign Up</title>
     <style>
       
        * {
@@ -250,14 +250,14 @@
         <img src="Square.png" alt="Half Circle" class="shape half-circle">
 
         <div class="form-container">
-            <h1>Sign in</h1>
-            <form id="signupForm">
+            <h1>Sign Up</h1>
+            <form id="signupForm" action="connect.php" method="post">
               <div class="input-group">
                 <label for="name">Name</label>
                 <div class="input-icon">
                   <img src="image 1.png" alt="User Icon" class="icon">
                   <span class="divider">|</span>
-                  <input type="text" id="name" name="name" placeholder="Write your new username">
+                  <input type="text" id="name" name="Username" placeholder="Write your new username">
                 </div>
               </div>
 
@@ -275,7 +275,7 @@
                 <div class="input-icon">
                   <img src="Password.png" alt="Password Icon" class="icon">
                   <span class="divider">|</span>
-                  <input type="password" id="password" name="password" placeholder="Write an new password">
+                  <input type="password" id="password" name="Password" placeholder="Write an new password">
                   <button type="button" id="togglePassword" class="toggle-password">
                     <i class="eye-icon closed-eye"></i>
                   </button>
@@ -283,7 +283,7 @@
               </div>
 
               <button type="submit" class="btn">Sign up </button>
-              <p class="login-link"> have an account? <a href="Login.html">Log in</a></p>
+              <p class="login-link"> have an account? <a href="Login.php">Log in</a></p>
             </form>
         </div>
     </div>

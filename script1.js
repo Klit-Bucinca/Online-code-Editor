@@ -21,6 +21,7 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
   }
 
   alert('Form submitted successfully!');
+  e.target.submit();
 });
 
 function validateEmail(email) {

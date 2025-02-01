@@ -1,3 +1,70 @@
+<?php
+session_start();
+
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$conn = new mysqli('localhost', 'root', '', 'user_database');
+
+if ($conn->connect_error) {
+    die("Connection Failed: " . $conn->connect_error);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['username']) || !isset($_POST['password'])) {
+        echo "Error: Missing required fields.";
+        exit;
+    }
+
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    if (empty($username) || empty($password)) {
+        echo "Error: Username and password are required.";
+        exit;
+    }
+
+    // Check if user exists
+    $stmt = $conn->prepare("SELECT id, Username, Password FROM regist WHERE Username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id, $dbUsername, $dbPassword);
+        $stmt->fetch();
+
+        if (password_verify($password, $dbPassword)) {
+            $_SESSION['user_id'] = $id;
+            $_SESSION['username'] = $dbUsername;
+
+            // Set cookies for 7 days
+            setcookie("user_id", $id, time() + (7 * 24 * 60 * 60), "/");
+            setcookie("username", $dbUsername, time() + (7 * 24 * 60 * 60), "/");
+
+            // ✅ Redirect "Admin" user to admin.php
+            if ($dbUsername === "Admin") {
+                echo "admin";
+            } else {
+                echo "success";
+            }
+            exit;
+        } else {
+            echo "Error: Incorrect password.";
+            exit;
+        }
+    } else {
+        echo "Error: Username not found.";
+        exit;
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -305,7 +372,7 @@
                     </div>
     
                     <button type="submit" class="btn">Log in</button>
-                    <p class="login-link">Don't have an account? <a href="Sign up.html">Sign Up</a></p>
+                    <p class="login-link">Don't have an account? <a href="Sign up.php">Sign Up</a></p>
                 </form>
             </div>
         </div>
@@ -316,6 +383,4 @@
 
 </body>
 </html>
-
-    
 
