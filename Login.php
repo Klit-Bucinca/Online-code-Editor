@@ -42,9 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Set cookies for 7 days
             setcookie("user_id", $id, time() + (7 * 24 * 60 * 60), "/");
             setcookie("username", $dbUsername, time() + (7 * 24 * 60 * 60), "/");
-
-            // ✅ Redirect "Admin" user to admin.php
             if ($dbUsername === "Admin") {
+                $_SESSION['is_admin'] = true;
                 echo "admin";
             } else {
                 echo "success";

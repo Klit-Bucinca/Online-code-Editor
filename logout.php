@@ -6,6 +6,7 @@ session_destroy();
 // Delete cookies
 setcookie("user_id", "", time() - 3600, "/");
 setcookie("username", "", time() - 3600, "/");
+setcookie("is_admin", "", time() - 3600, "/");
 
 // Redirect to home.html in the Home folder
 header("Location: Home/home.php");

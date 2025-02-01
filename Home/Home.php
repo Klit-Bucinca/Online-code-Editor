@@ -1,6 +1,10 @@
 <?php
     include 'connect.php';
     include 'contact_process.php';
+    $isAdmin = false;
+    if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin') {
+        $isAdmin = true;
+    }
 ?>
 
    <!DOCTYPE html>
@@ -25,9 +29,14 @@
                 <div class="dropdown_menu" id="dropdown_menu">
                     <li class="nav_AboutUs"><a href="#aboutUs">About us</a></li>
                     <li class="nav_Uses"><a href="#uses">Uses</a></li>
-                    <li class="nav_GoToEditor"><a href="../Main.php">Go to Editor</a></li>
+                    <li class="nav_GoToEditor"><a href="<?php echo $isAdmin ? '../admin.php' : '../Main.php'; ?>">Go to Editor</a></li>
                     <li class="nav_ContactUs"><a href="#contactUS">Contact us</a></li>
-                    <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
+
+                    <?php if(isset($_SESSION['username'])): ?>
+                        <li class="nav_Username"><span><?php echo htmlspecialchars($_SESSION['username']); ?></span></li>
+                    <?php else: ?>
+                        <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
+                    <?php endif; ?>
                 </div>
         
 
@@ -35,17 +44,22 @@
                 <ul class="navigation-links">
                     <li class="nav_AboutUs"><a href="#aboutUs">About us</a></li>
                     <li class="nav_Uses"><a href="#uses">Uses</a></li>
-                    <li class="nav_GoToEditor"><a href="../Main.php">Go to Editor</a></li>
+                    <li class="nav_GoToEditor"><a href="<?php echo $isAdmin ? '../admin.php' : '../Main.php'; ?>">Go to Editor</a></li>
                     <li class="nav_ContactUs"><a href="#contactUS">Contact us</a></li>
-                    <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
+                    <?php if(isset($_SESSION['username'])): ?>
+                        <li class="nav_Username"><span><?php echo htmlspecialchars($_SESSION['username']); ?></span></li>
+                    <?php else: ?>
+                        <li class="nav_SignUp"><a href="../Sign up.php">Sign up</a></li>
+                        
+                    <?php endif; ?>
                 </ul>
             </div>
 
             <div class="icons">
-                <a href=""><img src="Images/github.png" alt="github logo"></a>
-                <a href=""><img src="Images/discord.png" alt="discord logo"></a>
-                <a href=""><img src="Images/twitter.png" alt="twitter logo"></a>
-                <a href=""><img src="Images/reddit.png" alt="reddit logo"></a>
+                <a href="https://github.com/"><img src="Images/github.png" alt="github logo"></a>
+                <a href="https://discord.com/"><img src="Images/discord.png" alt="discord logo"></a>
+                <a href="https://x.com/"><img src="Images/twitter.png" alt="twitter logo"></a>
+                <a href="https://www.reddit.com/"><img src="Images/reddit.png" alt="reddit logo"></a>
             </div>
 
         </nav>
@@ -97,7 +111,9 @@
                                     <div class="slide-content">
                                         <h3><?php echo htmlspecialchars($slide['title']); ?></h3>
                                         <p><?php echo htmlspecialchars($slide['description']); ?></p>
+                                        <?php if ($isAdmin): ?>
                                         <button class="delete-slide" data-id="<?php echo $slide['id']; ?>">Delete Slide</button>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <?php
@@ -118,6 +134,7 @@
                     </div>
                 </div>
                 
+                <?php if ($isAdmin): ?>
                 <div class="slider_form">
                     <form action="add_slide.php" method="POST" enctype="multipart/form-data" id="sliderForm">
                         <h3 class="get-in-contact">ADD NEW SLIDE</h3>
@@ -138,6 +155,7 @@
                         <button type="submit" class="submit">Add Slide</button>
                     </form>
                 </div>
+                <?php endif; ?>
 
                 <div class="logo_set2">
 

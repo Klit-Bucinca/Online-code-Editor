@@ -318,6 +318,7 @@ button:hover {
         <ul>
             <li><a href="javascript:void(0)" onclick="showSection('users')">All Users</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('adminmain')">Admin Editor</a></li>
+            <li><a href="Home/Home.php">Manage Slider</a></li>
         </ul>
         <div class="sign-out">
             <a href="logout.php">Sign Out</a>
