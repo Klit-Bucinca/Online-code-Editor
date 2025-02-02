@@ -412,9 +412,6 @@ button:hover {
             </table>
         </section>
 
-        <section id="adminmain" class="admin-section hidden">
-            <h2>Admin Editor</h2>
-        </section>
     </div>
 
     <div id="edit-user-modal" class="modal">
