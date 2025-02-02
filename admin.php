@@ -395,6 +395,16 @@ button:hover {
             }
         }
 
+        function editUserPopup(id, username, email) {
+            const modal = document.getElementById('edit-user-modal');
+            modal.style.display = 'block';
+
+
+            modal.dataset.userId = id;
+
+            document.getElementById('edit-username').value = username;
+            document.getElementById('edit-email').value = email;
+    }
         
     </script>
 </head>
