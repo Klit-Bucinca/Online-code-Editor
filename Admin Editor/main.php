@@ -12,6 +12,7 @@
       <h2>Saved Prompts</h2>
       <div class="saved-prompts">
       </div>
+      <button class="go-back-btn" onclick="window.location.href='../Home/Home.php';">Go Back</button>
     </div>
     <div class="main">
       <div class="input-area">

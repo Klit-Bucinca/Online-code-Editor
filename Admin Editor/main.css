@@ -199,6 +199,24 @@ textarea {
   z-index: 11;
 }
 
+.go-back-btn {
+  background: #f06;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; 
+  margin-top: 15px; 
+  text-align: center;
+}
+
+.go-back-btn:hover {
+  background: #d0044d;
+}
+
+
 
 
 @media (max-width: 1200px) {
