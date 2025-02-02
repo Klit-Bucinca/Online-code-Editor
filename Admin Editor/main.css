@@ -1,6 +1,4 @@
-/* ===================== */
-/* General Reset & Layout */
-/* ===================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -26,9 +24,6 @@ body {
   position: relative;
 }
 
-/* ===================== */
-/* Navbar (Sidebar) */
-/* ===================== */
 .navbar {
   flex: 0 0 350px;
   max-width: 350px;
@@ -62,9 +57,7 @@ body {
   gap: 10px;
 }
 
-/* ===================== */
-/* Prompt Styles */
-/* ===================== */
+
 .prompt {
   display: flex;
   justify-content: space-between;
@@ -101,9 +94,7 @@ body {
   background: #d0044d;
 }
 
-/* ===================== */
-/* Save Area */
-/* ===================== */
+
 .save-area {
   display: flex;
   gap: 10px;
@@ -136,9 +127,7 @@ body {
   background: #d0044d;
 }
 
-/* ===================== */
-/* Code Editor Section */
-/* ===================== */
+
 .main {
   flex-grow: 1;
   display: flex;
@@ -168,7 +157,7 @@ textarea {
   resize: none;
 }
 
-/* Output Preview */
+
 .output {
   flex-grow: 1;
   background: #eaeaea;
@@ -178,9 +167,7 @@ textarea {
   height: 35%;
 }
 
-/* ===================== */
-/* Navbar & Layout Toggle */
-/* ===================== */
+
 .layout-toggle {
   position: fixed;
   top: 10px;
@@ -212,11 +199,8 @@ textarea {
   z-index: 11;
 }
 
-/* ===================== */
-/* Responsive Design */
-/* ===================== */
 
-/* Tablets & Small Screens (≤1200px) */
+
 @media (max-width: 1200px) {
   .main {
     flex-direction: column;
@@ -233,7 +217,7 @@ textarea {
   }
 }
 
-/* Mobile & Tablets (≤768px) */
+
 @media (max-width: 768px) {
   body {
     overflow-y: auto;
