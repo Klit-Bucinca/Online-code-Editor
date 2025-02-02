@@ -30,7 +30,18 @@ if ($result->num_rows > 0) {
         $users[] = $row;
     }
 }
+
+// Fetch all contact form messages
+$sql = "SELECT * FROM contact_form ORDER BY submitted_at DESC";
+$result = $conn->query($sql);
+$contacts = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $contacts[] = $row;
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,7 +190,6 @@ table td:last-child {
     gap: 10px;
 }
 
-
 button {
     background-color: #d4155b;
     color: #fff;
@@ -235,6 +245,7 @@ button:hover {
     padding: 10px;
     margin-top: 10px;
 }
+
 
 
 @media (max-width: 1200px) {
@@ -319,26 +330,40 @@ button:hover {
     }
 }
 
+.hidden {
+    display: none;
+}
+
+.admin-section {
+    display: none;
+}
+
+#welcome {
+    display: block;
+}
+
+
 
     </style>
     <script>
         function showSection(sectionId) {
-            if (sectionId === 'adminmain') {
-                window.location.href = 'Admin Editor/main.php';
-                return;
-            }
-            document.querySelectorAll('.admin-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
+    if (sectionId === 'adminmain') {
+        window.location.href = 'Admin Editor/main.php';
+        return;
+    }
 
-        function editUserPopup(id, username, email) {
-            document.getElementById('edit-username').value = username;
-            document.getElementById('edit-email').value = email;
-            document.getElementById('edit-user-modal').dataset.userId = id;
-            document.getElementById('edit-user-modal').style.display = 'block';
-        }
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.style.display = 'none';
+    });
+
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
+    }
+}
+
+
+
 
         function saveUserChanges() {
             const id = document.getElementById('edit-user-modal').dataset.userId;
@@ -369,48 +394,88 @@ button:hover {
                 .catch(error => console.error('Error:', error));
             }
         }
+
+        
     </script>
 </head>
 <body>
     <nav class="sidebar">
         <h2>Welcome, Admin</h2>
         <ul>
+            <li><a href="javascript:void(0)" onclick="showSection('welcome')">Welcome</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('users')">All Users</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('adminmain')">Admin Editor</a></li>
-            <li><a href="Home/Home.php">Manage Slider</a></li>
+            <li><a href="javascript:void(0)" onclick="showSection('contact_messages')">Contact Messages</a></li>
         </ul>
+
         <div class="sign-out">
             <a href="logout.php">Sign Out</a>
         </div>
     </nav>
 
     <div class="main-content">
-        <section id="users" class="admin-section">
-            <h2>All Users</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($users as $user): ?>
-                        <tr>
-                            <td><?= $user['id'] ?></td>
-                            <td><?= htmlspecialchars($user['Username']) ?></td>
-                            <td><?= htmlspecialchars($user['Email']) ?></td>
-                            <td>
-                                <button onclick="editUserPopup(<?= $user['id'] ?>, '<?= htmlspecialchars($user['Username']) ?>', '<?= htmlspecialchars($user['Email']) ?>')">Edit</button>
-                                <button onclick="deleteUser(<?= $user['id'] ?>)">Delete</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </section>
+    <section id="welcome" class="admin-section">
+    <h2>Welcome, <?= $_SESSION['username'] ?>!</h2>
+    <p>👋 This is your admin panel. Use the navigation bar to manage users and messages.</p>
+</section>
+
+<section id="users" class="admin-section hidden">
+    <h2>All Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $user['id'] ?></td>
+                    <td><?= htmlspecialchars($user['Username']) ?></td>
+                    <td><?= htmlspecialchars($user['Email']) ?></td>
+                    <td>
+                        <button onclick="editUserPopup(<?= $user['id'] ?>, '<?= htmlspecialchars($user['Username']) ?>', '<?= htmlspecialchars($user['Email']) ?>')">Edit</button>
+                        <button onclick="deleteUser(<?= $user['id'] ?>)">Delete</button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>
+
+<section id="contact_messages" class="admin-section hidden">
+    <h2>Contact Messages</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($contacts as $contact): ?>
+                <tr>
+                    <td><?= $contact['id'] ?></td>
+                    <td><?= htmlspecialchars($contact['first_name']) ?></td>
+                    <td><?= htmlspecialchars($contact['last_name']) ?></td>
+                    <td><?= htmlspecialchars($contact['phone_number']) ?></td>
+                    <td><?= htmlspecialchars($contact['email']) ?></td>
+                    <td><?= htmlspecialchars($contact['message']) ?></td>
+                    <td><?= $contact['submitted_at'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>
+
 
     </div>
 
