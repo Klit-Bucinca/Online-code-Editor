@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSelect = document.getElementById('user-select');
     const promptNameInput = document.getElementById('prompt-name');
 
-    // ✅ Function to update the output preview
+    //  Function to update the output preview
     function updateOutput() {
         const html = htmlInput.value;
         const css = `<style>${cssInput.value}</style>`;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✅ Function to fetch all saved prompts from the database
+    //  Function to fetch all saved prompts from the database
     function loadSavedPrompts() {
         fetch('getPrompts.php')
             .then(response => response.json())
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // ✅ Function to add a saved prompt to the navbar
+    //  Function to add a saved prompt to the navbar
     function addPromptToNavbar(id, name, html, css, js) {
         const promptElement = document.createElement('div');
         promptElement.className = 'prompt';
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         savedPromptsContainer.appendChild(promptElement);
     }
 
-    // ✅ Function to delete a prompt from the database and remove it from UI
+    // Function to delete a prompt from the database and remove it from UI
     function deletePromptFromDatabase(promptId, promptElement) {
         fetch('deletePrompt.php', {
             method: 'POST',
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // ✅ Function to save a new prompt to the database
+    //  Function to save a new prompt to the database
     function savePrompt() {
         const name = promptNameInput.value.trim();
         const html = htmlInput.value.trim();
@@ -142,15 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // ✅ Attach event listeners
+    // Attach event listeners
     saveButton.addEventListener('click', savePrompt);
 
-    // ✅ Hook up the inputs to update the iframe output
+    //  Hook up the inputs to update the iframe output
     [htmlInput, cssInput, jsInput].forEach((input) => {
         input.addEventListener('input', updateOutput);
     });
 
-    // ✅ Initialize: Load saved prompts & update output on page load
     updateOutput();
     loadSavedPrompts();
 });

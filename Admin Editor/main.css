@@ -1,4 +1,6 @@
-/* General Reset */
+/* ===================== */
+/* General Reset & Layout */
+/* ===================== */
 * {
   margin: 0;
   padding: 0;
@@ -18,12 +20,15 @@ body {
 
 .container {
   display: flex;
-  width: 90%;
-  height: 90%;
-  gap: 20px;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
   position: relative;
 }
 
+/* ===================== */
+/* Navbar (Sidebar) */
+/* ===================== */
 .navbar {
   flex: 0 0 350px;
   max-width: 350px;
@@ -33,7 +38,7 @@ body {
   justify-content: space-between;
   padding: 20px;
   border-right: 2px solid #f06;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -57,6 +62,9 @@ body {
   gap: 10px;
 }
 
+/* ===================== */
+/* Prompt Styles */
+/* ===================== */
 .prompt {
   display: flex;
   justify-content: space-between;
@@ -74,13 +82,6 @@ body {
   transform: scale(1.02);
 }
 
-.prompt .prompt-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
 .prompt .prompt-name {
   font-size: 14px;
   color: #fff;
@@ -94,20 +95,24 @@ body {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .prompt .delete-btn:hover {
   background: #d0044d;
 }
 
+/* ===================== */
+/* Save Area */
+/* ===================== */
 .save-area {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.save-area input {
+.save-area input,
+.save-area select {
   flex: 1;
   padding: 10px;
   border: 2px solid #f06;
@@ -125,59 +130,35 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .save-area button:hover {
   background: #d0044d;
 }
 
-/* User Info Section */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  padding: 10px;
-  background: #2c2c2c;
-  border-radius: 5px;
-  border: 2px solid #f06;
-}
-
-.user-info img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid #f06;
-}
-
-.user-info .username {
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-
+/* ===================== */
+/* Code Editor Section */
+/* ===================== */
 .main {
-  flex: 2;
+  flex-grow: 1;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
   padding: 20px;
   margin-left: 350px;
-  width: calc(100% - 350px); 
+  width: calc(100% - 350px);
+  height: 100vh;
   box-sizing: border-box;
 }
 
 .input-area {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex-grow: 1;
   gap: 10px;
 }
 
 textarea {
-  flex: 1;
+  flex-grow: 1;
   padding: 10px;
   border: 2px solid #f06;
   border-radius: 2px;
@@ -187,28 +168,19 @@ textarea {
   resize: none;
 }
 
+/* Output Preview */
 .output {
-  flex: 1;
+  flex-grow: 1;
   background: #eaeaea;
   border: 2px solid #f06;
   border-radius: 2px;
   padding: 20px;
+  height: 35%;
 }
 
-/* Layout Modes */
-.layout-vertical-left {
-  flex-direction: row;
-}
-
-.layout-horizontal {
-  flex-direction: column;
-}
-
-.layout-vertical-right {
-  flex-direction: row-reverse;
-}
-
-/* Fixed Layout Toggle Button */
+/* ===================== */
+/* Navbar & Layout Toggle */
+/* ===================== */
 .layout-toggle {
   position: fixed;
   top: 10px;
@@ -225,7 +197,6 @@ textarea {
   background: #d0044d;
 }
 
-/* Navbar Toggle Button */
 .navbar-toggle {
   position: fixed;
   top: 10px;
@@ -233,26 +204,55 @@ textarea {
   background: #f06;
   color: #fff;
   border: none;
-  padding: 10px;
-  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  z-index: 10;
   display: none;
+  z-index: 11;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100%;
-    z-index: 9;
-    transform: translateX(-100%);
+/* ===================== */
+/* Responsive Design */
+/* ===================== */
+
+/* Tablets & Small Screens (≤1200px) */
+@media (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+    margin-left: 350px;
+    width: calc(100% - 350px);
   }
 
-  .layout-toggle {
-    display: none;
+  .input-area {
+    height: auto;
+  }
+
+  .output {
+    height: 250px;
+  }
+}
+
+/* Mobile & Tablets (≤768px) */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .navbar {
+    position: fixed;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    z-index: 10;
+    transition: transform 0.3s ease;
   }
 
   .navbar.open {
@@ -261,13 +261,14 @@ textarea {
 
   .main {
     flex-direction: column;
-    gap: 10px;
     margin-left: 0;
-    width: 100%; 
+    width: 100%;
+    padding: 10px;
   }
 
-  .navbar-toggle {
-    display: block;
+  .input-area {
+    flex-direction: column;
+    height: auto;
   }
 
   textarea {
@@ -276,6 +277,10 @@ textarea {
   }
 
   .output {
-    height: 300px;
+    height: 200px;
+  }
+
+  .navbar-toggle {
+    display: block;
   }
 }
