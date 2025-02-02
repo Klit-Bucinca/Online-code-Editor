@@ -67,7 +67,7 @@
         <div class="all-main">
             <div class="main1">
                 <h1 class="text-ngjyra">A Fast Code Editor</h1>
-                <h1 class="text-pa-ngjyra">Editor Name</h1>
+                <h1 class="text-pa-ngjyra">DevBox</h1>
                 <p class="main-text">Welcome to DevBox, your all-in-one, browser-based code editor designed for coders of every level. Whether you're a beginner learning the ropes or a pro refining your craft, our editor provides a clean, intuitive space to write, test, and perfect your code in HTML, CSS, and JavaScript.</p>
                 <section id="aboutUs"></section>
             </div>
