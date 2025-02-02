@@ -11,7 +11,6 @@
     <div class="navbar">
       <h2>Saved Prompts</h2>
       <div class="saved-prompts">
-        <!-- Populated dynamically by getPrompts.php -->
       </div>
     </div>
     <div class="main">
