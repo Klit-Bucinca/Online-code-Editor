@@ -405,6 +405,7 @@ button:hover {
             <li><a href="javascript:void(0)" onclick="showSection('welcome')">Welcome</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('users')">All Users</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('adminmain')">Admin Editor</a></li>
+            <li><a href="Home/Home.php">Manage Slider</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('contact_messages')">Contact Messages</a></li>
         </ul>
 
