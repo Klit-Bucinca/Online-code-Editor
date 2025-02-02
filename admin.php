@@ -19,7 +19,6 @@ if ($_SESSION['username'] !== "Admin") {
     exit;
 }
 
-// Include the database connection
 include('connectadmin.php');
 
 // Fetch all users
@@ -39,9 +38,7 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <style>
-/* ========================= */
-/* 🔹 General Reset & Layout */
-/* ========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -56,9 +53,7 @@ body {
     display: flex;
 }
 
-/* ========================= */
-/* 🔹 Sidebar Navigation */
-/* ========================= */
+
 .sidebar {
     width: 250px;
     background-color: #1c1c1c;
@@ -101,7 +96,7 @@ body {
     background-color: #2a2a2a;
 }
 
-/* Sign Out Button */
+
 .sign-out {
     margin-top: auto;
     text-align: center;
@@ -124,9 +119,7 @@ body {
     background-color: #ff85c4;
 }
 
-/* ========================= */
-/* 🔹 Main Content */
-/* ========================= */
+
 .main-content {
     margin-left: 270px;
     padding: 40px;
@@ -140,9 +133,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* ========================= */
-/* 🔹 Table Styles */
-/* ========================= */
+
 table {
     width: 95%;
     margin: 20px auto;
@@ -153,7 +144,7 @@ table {
     text-align: left;
 }
 
-/* Table Headings */
+
 table th {
     background-color: #2a2a2a;
     color: #d4155b;
@@ -161,7 +152,7 @@ table th {
     text-align: left;
 }
 
-/* Table Cells */
+
 table td {
     border-bottom: 1px solid #333;
     padding: 15px;
@@ -169,28 +160,26 @@ table td {
     vertical-align: middle;
 }
 
-/* ID Column Centering */
+
 table td:first-child {
     text-align: center;
     width: 50px;
 }
 
-/* Actions Column */
+
 table td:last-child {
     text-align: center;
     width: 150px;
 }
 
-/* Action Buttons */
+
 .action-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-/* ========================= */
-/* 🔹 Buttons */
-/* ========================= */
+
 button {
     background-color: #d4155b;
     color: #fff;
@@ -205,9 +194,7 @@ button:hover {
     background-color: #c4005d;
 }
 
-/* ========================= */
-/* 🔹 Modal Popup */
-/* ========================= */
+
 .modal {
     display: none;
     position: fixed;
@@ -249,11 +236,7 @@ button:hover {
     margin-top: 10px;
 }
 
-/* ========================= */
-/* 📱 **Responsive Design** */
-/* ========================= */
 
-/* ✅ Medium Screens (≤1200px) */
 @media (max-width: 1200px) {
     .main-content {
         margin-left: 250px;
@@ -270,7 +253,7 @@ button:hover {
     }
 }
 
-/* ✅ Tablets & Phones (≤768px) */
+
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -313,7 +296,7 @@ button:hover {
     }
 }
 
-/* ✅ Small Phones (≤480px) */
+
 @media (max-width: 480px) {
     .sidebar ul {
         flex-direction: column;

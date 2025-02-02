@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php'; // Database connection file
+require 'db.php';
 
 // Redirect if user is not logged in
 if (!isset($_SESSION['user_id'])) {

@@ -1,8 +1,6 @@
 <?php
-include 'connectadmin.php'; // Include your database connection
+include 'connectadmin.php';
 
-
-// Fetch saved prompts with the user's name and ID
 $query = "
     SELECT 
         prompts.id AS prompt_id, 
